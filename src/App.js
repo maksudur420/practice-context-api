@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import React, { useEffect, useState,createContext } from 'react';
+import Users from './components/Users';
+import NewUser from './components/NewUser';
 import './App.css';
 
+export const usersContext = createContext({});
+
+
 function App() {
+  const [users, setUsers] =useState([]);
+
+  useEffect(()=>{
+    fetch('fakedata.json')
+    .then(res=>res.json())
+    .then(data=>setUsers(data))
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <usersContext.Provider value={{users,setUsers}}>
+      <div>
+          <NewUser></NewUser>
+          <Users></Users>
+      </div>
+    </usersContext.Provider>
+   
   );
 }
 

@@ -1,0 +1,14 @@
+.user{
+    background-color: aquamarine;
+    padding: 20px 20px;
+    border-radius: 8px;
+}
+.user button {
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    font-weight: semibold;
+}
